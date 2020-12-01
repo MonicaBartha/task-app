@@ -13,7 +13,8 @@ React transition group<br>
   installed mongodb compass<br>
   postman for request get, post, put, delete<br>
   bcryptjs to hash the passwords<br>
-  express-validator
+  express-validator<br>
+  https://jwt.io/ for check the token
 
 ### Functionalities
 
