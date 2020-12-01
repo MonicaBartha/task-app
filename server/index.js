@@ -7,6 +7,9 @@ const app = express();
 // connect to database
 connectDB();
 
+// enable express.json
+app.use(express.json({ extended: true}));
+
 const PORT = process.env.PORT || 4000;
 
 // import routes
