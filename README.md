@@ -14,7 +14,8 @@ React transition group<br>
   postman for request get, post, put, delete<br>
   bcryptjs to hash the passwords<br>
   express-validator<br>
-  https://jwt.io/ for check the token
+  https://jwt.io/ for check the token<br>
+  cors
 
 ### Functionalities
 

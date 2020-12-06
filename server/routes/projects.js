@@ -7,11 +7,11 @@ const {check} = require('express-validator');
 // Create projects
 // api/projects
 router.post('/', 
-auth,
-[
-    check('name', 'Project name is required').not().isEmpty()
-],
-projectController.createProject
+    auth,
+    [
+        check('name', 'Project name is required').not().isEmpty()
+    ],
+    projectController.createProject
 );
 
 // get all projects
