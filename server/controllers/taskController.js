@@ -14,13 +14,14 @@ exports.createTask = async (req, res) => {
         // Extract the project and check if exist
         const { project } = req.body;
 
-         const actualProject = await Project.findById(project);
-         if( !actualProject) {
-             return res.status(404).json({msg: 'Project not founded'})
-         }
+        const actualProject = await Project.findById(project);
 
-         // check if the selected project belongs to a logged in user
-         if( actualProject.author.toString() !== req.user.id ) {
+        if( !actualProject) {
+             return res.status(404).json({msg: 'Project not founded'})
+        }
+
+        // check if the selected project belongs to a logged in user
+        if( actualProject.author.toString() !== req.user.id ) {
              return res.status(401).json({msg: 'Not authorized'});
          }
 
@@ -32,15 +33,15 @@ exports.createTask = async (req, res) => {
      } catch (error) {
          console.log(error);
          res.status(500).send('Error was found.')
-     }
+       }
 }
 
 // get the tasks of a project
 exports.getTasks = async (req, res) => {
     try {
         // Extract the project and check if exist
-        const { project } = req.body;
-
+        const { project } = req.query;
+       
         const actualProject = await Project.findById(project);
           if( !actualProject) {
              return res.status(404).json({msg: 'Project not founded'})
@@ -52,9 +53,9 @@ exports.getTasks = async (req, res) => {
           }
 
           // get tasks by project
-          const tasks = await Task.find({ project });
+          const tasks = await Task.find({ project }).sort({created: -1});
           res.json({ tasks });
-
+         
     } catch (error) {
         console.log(error);
         res.status(500).send('Error was found.')
@@ -68,9 +69,9 @@ exports.updateTask = async (req, res) => {
         const { project, name, state } = req.body;
 
         // check if the task exist
-        let checkTask = await Task.findById(req.params.id);
+        let task = await Task.findById(req.params.id);
 
-        if( !checkTask ) {
+        if( !task ) {
           return res.status(404).json({msg: 'Task is not created.'})
         }
 
@@ -84,15 +85,15 @@ exports.updateTask = async (req, res) => {
 
         // createing an object with the new info
         const newTask = {};
-        if (name) newTask.name = name;
+        newTask.name = name;
        
-        if (state) newTask.state = state;
+        newTask.state = state;
 
         // save the task 
-        checkTask = await Task.findOneAndUpdate({ _id: req.params.id }, 
+        task = await Task.findOneAndUpdate({ _id: req.params.id }, 
         newTask, { new: true });
 
-        res.json({checkTask});
+        res.json({task});
        
     } catch (error) {
         console.log(error);
@@ -104,7 +105,7 @@ exports.updateTask = async (req, res) => {
 exports.deleteTask = async (req, res) => {
     try {
         // Extract the project and check if exist
-        const { project } = req.body;
+        const { project } = req.query;
 
         // check if the task exist
         let checkTask = await Task.findById(req.params.id);
