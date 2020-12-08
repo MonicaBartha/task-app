@@ -43,10 +43,7 @@ exports.createUser = async (req, res) => {
             if(error) throw error;
             // confirmation message
             res.json({ token });
-            
-        });
-
-       
+        });       
     } catch (error) {
         console.log(error);
         res.status(400).send('Error was found');

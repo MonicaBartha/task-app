@@ -1,17 +1,19 @@
 // Routes for users login
 const express = require('express');
 const router = express.Router();
-const { check } = require('express-validator');
 const authController = require('../controllers/authController');
+const auth = require('../middleware/auth');
 
-
+// Login
 // endpoint api/auth
 router.post('/', 
-[
-    check('email', 'Add a valid email').isEmail(),
-    check('password', 'Password must have minimum 6 characters').isLength({min: 6})
-],
 authController.loginUsers
 );
+
+// get the logged in user
+router.get('/',
+    auth,
+    authController.loggedinUser
+)
 
 module.exports = router;
