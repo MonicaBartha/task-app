@@ -1,27 +1,22 @@
-## MERN Tasks
+## Project and Tasks Manager - MERN Project
 
-React Hooks: useContext, useReducer, CSS3, JSX.
-
-### Technologies
-
-React router dom<br>
-React transition group<br>
-
-- Backend:
-  nodemon<br>
-  express mongoose dotenv<br>
-  installed mongodb compass<br>
-  postman for request get, post, put, delete<br>
-  bcryptjs to hash the passwords<br>
-  express-validator<br>
-  https://jwt.io/ for check the token<br>
-  cors
-
-### Functionalities
-
-- user login
-- user registation
-- create new project
-- assign tasks to a project
+Technologies: React.js, Hooks: useContext, useReducer, Mongo DB, Express, Node, CSS3.
 
 ### Deploy
+
+### Dependencies:
+
+- React router dom
+- React transition group
+- Nodemon
+- Express 
+- Mongoose 
+- Dotenv for .env files
+- Bcryptjs for hash the passwords
+- Express-validator 
+- Jsonwebtoken, https://jwt.io/ to check the token
+- Cors
+- Mongodb compass
+- Postman for request get, post, put, delete
+  
+
