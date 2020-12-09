@@ -4,6 +4,8 @@ Technologies: React.js, Hooks: useContext, useReducer, Mongo DB, Express, Node, 
 
 ### Deploy
 
+https://projects-and-tasks.netlify.app/ 
+
 ### Dependencies:
 
 - React router dom
