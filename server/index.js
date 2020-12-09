@@ -14,7 +14,7 @@ app.use(cors());
 // enable express.json
 app.use(express.json({ extended: true}));
 
-const PORT = process.env.PORT || 4000;
+const port = process.env.port || 4000;
 
 // import routes
 app.use('/api/users', require('./routes/users'));
@@ -23,6 +23,6 @@ app.use('/api/projects', require('./routes/projects'));
 app.use('/api/tasks', require('./routes/tasks'));
 
 // deploy app
-app.listen(PORT, () => {
-    console.log(`server works in port ${PORT}`)
+app.listen(port, '0.0.0.0', () => {
+    console.log(`server works in port ${port}`)
 })
